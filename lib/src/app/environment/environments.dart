@@ -4,7 +4,8 @@ enum Environment {
   mock(),
   dev(baseUrl: "https://adexter.health/api/"),
   preprod(baseUrl: "https://adexter.health/api/"),
-  prod(baseUrl: "https://adexter.health/api/");
+  prod(baseUrl: "https://adexter.health/api/"),
+  test(baseUrl: "https://adexter.health/api/");
 
   final String baseUrl;
   final int connectTimeout;

@@ -21,7 +21,7 @@ final class ShiftHandoverScreen extends BlocProviderWidget<ShiftHandoverBloc> {
         Loading() => const LoadingWidget(),
         Error() => ShiftHandoverErrorWidget(state.message),
         Empty() => const ShiftHandoverEmptyWidget(),
-        _ => ReportViewWidget((state as Success).shiftReport),
+        Success() => ReportViewWidget(state.shiftReport),
       },
     ),
   );

@@ -1,7 +1,5 @@
 /// Helper class for timestamp parsing and manipulation
-final class TimestampHelper {
-  const TimestampHelper._();
-
+abstract class TimestampHelper {
   /// Parses a timestamp string to DateTime
   /// Returns current DateTime if parsing fails or string is null
   static DateTime parseTimestamp(String? timestampString) {

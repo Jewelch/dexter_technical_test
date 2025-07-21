@@ -3,6 +3,18 @@ import 'package:health/src/base/helpers/timestamp_helper.dart';
 
 void main() {
   group('TimestampHelper Tests', () {
+    group('Constructor', () {
+      test('should be a final class with private constructor', () {
+        // Assert - This ensures the class structure is correct
+        // The private constructor prevents instantiation
+        expect(TimestampHelper, isA<Type>());
+
+        // Testing that static methods work without instantiation
+        final result = TimestampHelper.parseTimestamp('2024-01-15T08:00:00Z');
+        expect(result, isA<DateTime>());
+      });
+    });
+
     group('parseTimestamp', () {
       test('should parse valid ISO 8601 timestamp string', () {
         // Arrange

@@ -3,6 +3,9 @@ import '../bloc/shift_handover_bloc.dart';
 import '../bloc/shift_handover_events.dart';
 import '../bloc/shift_handover_states.dart';
 
+@visibleForTesting
+enum ShiftHandoverScreenKeys { refreshButton }
+
 final class ShiftHandoverAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ShiftHandoverAppBar({super.key});
 
@@ -14,6 +17,7 @@ final class ShiftHandoverAppBar extends StatelessWidget implements PreferredSize
         builder: (context, state) => (state is Loading)
             ? const SizedBox.shrink()
             : IconButton(
+                key: ShiftHandoverScreenKeys.refreshButton.key,
                 icon: const Icon(Icons.refresh, color: AppColors.scaffold),
                 tooltip: 'Refresh Report',
                 onPressed: () =>

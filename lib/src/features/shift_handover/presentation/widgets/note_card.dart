@@ -4,6 +4,9 @@ import '../../../../base/screens/exports.dart';
 import '../../domain/entities/handover_note.dart';
 import '../../domain/entities/note_type.dart';
 
+@visibleForTesting
+enum NoteCardKeys { noteIcon, noteText, noteTypeText, noteTimestampText }
+
 final class NoteCard extends StatelessWidget {
   final HandoverNote note;
 
@@ -40,13 +43,18 @@ final class NoteCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
+            key: NoteCardKeys.noteIcon.key,
             padding: const EdgeInsets.only(right: 12.0, top: 4.0),
             child: Icon(icon, color: color, size: 28),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(note.text, style: Theme.of(context).textTheme.bodyLarge?.copyWith(height: 1.4)),
+              Text(
+                key: NoteCardKeys.noteText.key,
+                note.text,
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(height: 1.4),
+              ),
               const SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -58,6 +66,7 @@ final class NoteCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     child: Text(
+                      key: NoteCardKeys.noteTypeText.key,
                       note.type.name.toUpperCase(),
                       style: Theme.of(
                         context,
@@ -65,6 +74,7 @@ final class NoteCard extends StatelessWidget {
                     ),
                   ),
                   Text(
+                    key: NoteCardKeys.noteTimestampText.key,
                     DateFormat.jm().format(note.timestamp),
                     style: Theme.of(
                       context,
